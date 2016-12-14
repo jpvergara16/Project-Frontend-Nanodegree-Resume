@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
 This is empty on purpose! Your code to build the resume will go here.
  */
@@ -208,3 +209,9 @@ education.display();
 
 // -- end of EDUCATION SECTION
 
+||||||| merged common ancestors
+=======
+/*
+This is empty on purpose! Your code to build the resume will go here.
+ */
+>>>>>>> origin/master
