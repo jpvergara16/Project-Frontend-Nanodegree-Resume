@@ -164,7 +164,7 @@ a {
   background-color: #05041F;
 }
 
-.orange-text {
+.dark-text {
   color: #05041F;
 }
 
@@ -179,7 +179,7 @@ a {
   clear:both;
 }
 
-.dark-gray {
+.light-blue {
   background-color: #6DA9CF;
 }
 
@@ -267,6 +267,6 @@ span {
   }
 
   .flex-column{
-      flex-direction: column;
+    flex-direction: column;
   }
 }
