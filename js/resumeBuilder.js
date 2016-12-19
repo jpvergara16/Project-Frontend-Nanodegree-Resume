@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /*
 This is empty on purpose! Your code to build the resume will go here.
  */
@@ -14,59 +14,63 @@ var bio = {
       "twitter": "@jp_vergara_",
       "location": "Irvine"
   },
-  "welcomeMessage": "Hello and Welcome to my Resume!",
+  "welcomeMessage": "Hello, I'm Julius, and welcome to my Resume!",
   "skills": [
       "HTML", "CSS", "Javascript", "Web Development",
   ],
-  "bioPic": "images/fry.jpg",
+  "bioPic": "images/headshot.jpg",
 };
 
-
+bio.display = function () {
+// header info
 var formattedName = HTMLheaderName.replace("%data%", bio.name);
 var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 var bioPic = HTMLbioPic.replace("%data%",bio.bioPic);
 var welcomeMessage = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
+// contact info
+var formattedEmail = HTMLemail.replace("%data%", bio.contact.email);
+var formattedMobile = HTMLmobile.replace("%data%", bio.contact.phone);
+var formattedGithub = HTMLgithub.replace("%data%", bio.contact.github);
+var formattedTwitter = HTMLtwitter.replace("%data%", bio.contact.twitter);
+var formattedLocation = HTMLlocation.replace("%data%", bio.contact.location);
 
-for (var i = 0; i < bio.contact.length; i++) {
-  var formattedEmail = HTMLemail.replace("%data%", bio.contact[0]);
-  var formattedMobile = HTMLmobile.replace("%data%", bio.contact[1]);
-  var formattedGithub = HTMLgithub.replace("%data%", bio.contact[2]);
-  var formattedTwitter = HTMLtwitter.replace("%data%", bio.contact[3]);
-  var formattedLocation = HTMLlocation.replace("%data%", bio.contact[4]);
-
-
-  $("#topContacts").append(formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation);
-}
-
-$("#header").append(formattedName, formattedRole, bioPic, welcomeMessage);
-
+$("#footerContacts").append(formattedEmail, formattedGithub, formattedTwitter, formattedMobile, formattedLocation);
+$("#header").prepend(formattedName, formattedRole);
+$("#header").append(bioPic);
+$("#header").append(welcomeMessage);
 $("#header").append(HTMLskillsStart);
 for (var i =0; i < bio.skills.length; i++) {
 
  var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
  $("#skills").append(formattedSkill);
+  }
 }
 
+bio.display();
 
 // -- end of BIO HEADER SECTION
+
+// - NAV BAR SECTION
+
+// -- end of NAV BAR section
 
 // -- This is the WORK SECTION
 
 var work = {
  jobs: [
    {
-   "title": "Part Time Data Entry Loan Verification Specialist",
+   "title": "Loan Verification Specialist (PT)",
    "employer": "Advantage",
    "location": "Santa Ana",
    "dates": "Oct 2016 - Present",
-   "description": "Part time position where I assisted in the processing, filing, and reviewing of mortgage files and utilized an information control system to keep up to date records of all client information"
+   "description": "Mortgage loan management and review utilizing company file inventory system"
  },
  {
-   "title": "Billing Specialist",
+   "title": "CSR & Billing Specialist (FT)",
    "employer": "Student Services",
    "location": "Newport Beach",
    "dates": "Aug 2015 - June 2016",
-   "description": "Full time position where I provided billing support and customer service a student loan consolidation company, primarily through the use of telecommunications. I used company CRM software and web applications such as DebtPayPro to assist with client information, process payments and handle document filing. I also used Google Applications and Microsoft Office to establish better workflow for other departments and to manage company data and processing."
+   "description": "Billing support, Customer Phone Service, Utilized CRM software DebtPayPro and other web applications such as Google Apps"
  }
  ]
 };
@@ -76,16 +80,16 @@ function displayWork() {
    $("#workExperience").append(HTMLworkStart);
 
    var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[i].employer);
+   var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[i].location);
    var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[i].title);
    var formattedEmployerTitle= formattedTitle + formattedEmployer;
    var formattedDates = HTMLworkDates.replace("%data%", work.jobs[i].dates);
    var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[i].description);
-   var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[i].location);
 
    $(".work-entry:last").append(formattedEmployerTitle);
+   $(".work-entry:last").append(formattedLocation);
    $(".work-entry:last").append(formattedDates);
    $(".work-entry:last").append(formattedDescription);
-   $(".work-entry:last").append(formattedLocation);
  }
 }
 
@@ -104,21 +108,6 @@ function locantionizar (work_obj) {
 
 // -- end of WORK SECTION
 
-// -- start of the internationalizeButton
-
-function inName(name) {
- name = name.trim().split(" ");
-
- name[0] = name[0].slice(0,1).toUppperCase() + name[0].slice(1).toLowercase();
- name[1] = name[1].toUppperCase();
-
- return name[0] + " " + name[1];
-}
-
-$("#main").append(internationalizeButton);
-
-// -- end of the internationalizeButton section
-
 // -- start of PROJECTS SECTION
 
 var projects = {
@@ -134,7 +123,7 @@ var projects = {
    {
      "title":"Blog",
      "dates":2016,
-     "description":"Creating and implementing UX Design strategies to develop from scratch a sustainable and impressive blog meant for an up and coming E-Commerce site",
+     "description":"Creating and implementing UX Design strategies to develop from scratch a sustainable and impressive blog meant for an up and coming E-Commerce site (In Development)",
      "images": [
        "images/197x148.gif",
      ]
@@ -142,7 +131,7 @@ var projects = {
    {
      "title":"E-Commerce Site",
      "dates": 2017,
-     "description":"Creating and implementing UX Design strategies to develop from scratch a sustainable and impressive site used for E-Commerce, through webhosting platforms such as Shopify",
+     "description":"Creating and implementing UX Design strategies to develop from scratch a sustainable and impressive site used for E-Commerce, through webhosting platforms such as Shopify (In Development)",
      "images": [
        "images/197x148.gif",
      ]
@@ -176,42 +165,75 @@ projects.display();
 // -- EDUCATION SECTION
 
 var education = {
-  "onlineprograms": [
+  "online": [
     {
       "title": "Front End Web Development Nanodegree Program",
       "school": "Udacity",
-      "url": "https://www.udacity.com/",
+      "url": "udacity.com",
       "dates": "October 2016"
     },
     {
       "title": "User Experience Learning Path",
       "school": "Springboard",
-      "url": "https://www.springboard.com/learning-paths/user-experience-design",
+      "url": "springboard.com/learning-paths/user-experience-design",
       "dates": "July 2016"
-    }
+    },
+    {
+      "title": "Web Development Courses",
+      "school": "Codecademy",
+      "url": "codecademy.com",
+      "dates": "July 2016"
+    },
   ],
+  "schools": [
+    {
+      "name": "UC Irvine",
+      "dates": "August 2012 - July 2015",
+      "location": "Irvine",
+      "major":"Public Health and Business Management",
+      "description": "Left my third year to pursue other interests and research"
+    }
+  ]
 };
 
 $("#education").append(HTMLonlineClasses);
 $("#education").append(HTMLschoolStart);
 
 education.display = function() {
-  education.onlineprograms.forEach(function(op) {
+  education.online.forEach(function(op) {
+    var formattedonlineSchool = HTMLonlineSchool.replace("%data%", op.school);
     var formattedonlineTitle = HTMLonlineTitle.replace("%data%",op.title);
     var formattedonlineDates = HTMLonlineDates.replace("%data%", op.dates);
-    var formattedonlineSchool = HTMLonlineSchool.replace("%data%", op.school);
     var formattedonlineUrl = HTMLonlineURL.replace("%data%", op.url);
-    $(".education-entry:last").append(formattedonlineTitle, formattedonlineDates, formattedonlineSchool, formattedonlineUrl);
+    $(".education-entry:last").append(formattedonlineSchool, formattedonlineTitle, formattedonlineDates, formattedonlineUrl);
   });
+  education.schools.forEach(function(s) {
+    var formattedschoolName = HTMLschoolName.replace("%data%", s.name);
+    var formattedschoolDates = HTMLschoolDates.replace("%data%", s.dates);
+    var formattedschoolLocation = HTMLschoolLocation.replace("%data%", s.location);
+    var formattedschoolMajor = HTMLschoolMajor.replace("%data%", s.major);
+    var formattedschoolDescription = HTMLschoolDescription.replace("%data%",s.description);
+    $(".education-entry:last").append(formattedschoolName, formattedschoolDates, formattedschoolLocation, formattedschoolMajor, formattedschoolDescription);
+  });
+
 };
 
 education.display();
 
 // -- end of EDUCATION SECTION
 
-||||||| merged common ancestors
-=======
-/*
-This is empty on purpose! Your code to build the resume will go here.
- */
->>>>>>> origin/master
+/* -- start of the internationalizeButton (I opted this out but still kept the code for lesson purposes)
+
+function inName(name) {
+ name = name.trim().split(" ");
+
+ name[0] = name[0].slice(0,1).toUppperCase() + name[0].slice(1).toLowercase();
+ name[1] = name[1].toUppperCase();
+
+ return name[0] + " " + name[1];
+}
+
+$("#main").append(internationalizeButton);
+
+-- end of the internationalizeButton section
+*/
