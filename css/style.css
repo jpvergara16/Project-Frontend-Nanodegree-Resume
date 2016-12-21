@@ -21,9 +21,18 @@ h6,
 
 .education-entry,
 .work-entry,
-.project-entry {
+.project-entry,
+.summary-entry {
   padding: 0 5%;
   margin: 10px;
+}
+
+#summary,
+#workExperience,
+#projects,
+#education {
+  padding: 2% 0 2%;
+  text-align: justify;
 }
 
 h1 {
@@ -98,10 +107,6 @@ li a:hover:not(.active) {
   width: 100%;
 }
 
-#summary {
-  padding:10px;
-}
-
 .online-title {
   display:flex;
 }
@@ -160,7 +165,7 @@ a {
   display: none;
 }
 
-.orange {
+.dark {
   background-color: #05041F;
 }
 

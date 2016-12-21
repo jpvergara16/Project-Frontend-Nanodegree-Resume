@@ -5,29 +5,30 @@ This is empty on purpose! Your code to build the resume will go here.
 var bio = {
   "name": "Julius Vergara",
   "role": "Web Developer, UX Designer",
-  "contact": {
+  "contacts": {
     "email": "juliuspvergara@gmail.com",
-    "phone": "818-669-1091",
+    "mobile": "818-669-1091",
     "github": "jpvergara16",
     "twitter": "@jp_vergara_",
     "location": "Irvine"
   },
   "welcomeMessage": "Hello, I'm Julius, and welcome to my Resume!",
   "skills": ["HTML", "CSS", "Javascript", "Web Development", ],
-  "bioPic": "images/headshot.jpg",
+  "biopic": "images/headshot.jpg",
 };
+
 bio.display = function() {
   // header info
   var formattedName = HTMLheaderName.replace("%data%", bio.name);
   var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-  var bioPic = HTMLbioPic.replace("%data%", bio.bioPic);
+  var bioPic = HTMLbioPic.replace("%data%", bio.biopic);
   var welcomeMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
   // contact info
-  var formattedEmail = HTMLemail.replace("%data%", bio.contact.email);
-  var formattedMobile = HTMLmobile.replace("%data%", bio.contact.phone);
-  var formattedGithub = HTMLgithub.replace("%data%", bio.contact.github);
-  var formattedTwitter = HTMLtwitter.replace("%data%", bio.contact.twitter);
-  var formattedLocation = HTMLlocation.replace("%data%", bio.contact.location);
+  var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+  var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.phone);
+  var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+  var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+  var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
   $("#footerContacts").append(formattedEmail, formattedGithub, formattedTwitter, formattedMobile, formattedLocation);
   $("#header").prepend(formattedName, formattedRole);
   $("#header").append(bioPic);
@@ -37,25 +38,29 @@ bio.display = function() {
     var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
     $("#skills").append(formattedSkill);
   }
-}
-bio.display();
-// -- end of BIO HEADER SECTION
-// -- SUMMARY SECTION
-var bio = {
-  "name": "Julius Vergara",
-  "role": "Web Developer, UX Designer",
-  "contact": {
-    "email": "juliuspvergara@gmail.com",
-    "phone": "818-669-1091",
-    "github": "jpvergara16",
-    "twitter": "@jp_vergara_",
-    "location": "Irvine"
-  },
-  "welcomeMessage": "Hello, I'm Julius, and welcome to my Resume!",
-  "skills": ["HTML", "CSS", "Javascript", "Web Development", ],
-  "bioPic": "images/headshot.jpg",
 };
-// -- end of SUMMARY section
+bio.display();
+
+// -- end of BIO HEADER SECTION
+
+// -- SUMMARY SECTION
+var summary = {
+  "bio": "I am an up and coming web designer/developer, looking to make my mark in the tech platform.",
+  "goals": "My goals are to fully design and implement strategies in my UX courses to assist in the development of E-Commerce Sites, Blogs, and other, businesses/individuals to use their sites to their full potential.",
+  "plans": "I also eventually plan to own a digital media/marketing business and an E-Commerce business which I want to fully develop and run myself."
+};
+
+summary.display = function() {
+  $("#summary").append(HTMLsummaryStart);
+  var formattedsumBio = HTMLsummaryBio.replace("%data%", summary.bio);
+  var formattedsumGoals = HTMLsummaryGoals.replace("%data%", summary.goals);
+  var formattedsumPlans = HTMLsummaryPlans.replace("%data%", summary.plans);
+  $(".summary-entry:last").append(formattedsumBio,formattedsumGoals,formattedsumPlans);
+};
+
+summary.display();
+// -- end of SUMMARY SECTION
+
 // -- This is the WORK SECTION
 var work = {
   jobs: [{
@@ -70,10 +75,10 @@ var work = {
     "location": "Newport Beach",
     "dates": "Aug 2015 - June 2016",
     "description": "Billing support, Customer Phone Service, Utilized CRM software DebtPayPro and other web applications such as Google Apps"
-  }]
+  }],
 };
 
-function displayWork() {
+work.display = function() {
   for (var i = 0; i < work.jobs.length; i++) {
     $("#workExperience").append(HTMLworkStart);
     var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[i].employer);
@@ -88,16 +93,9 @@ function displayWork() {
     $(".work-entry:last").append(formattedDescription);
   }
 }
-displayWork();
+work.display();
 
-function locantionizar(work_obj) {
-  var locationArray = [];
-  for (job in work_obj.jobs) {
-    var newLocation = work_obj.jobs[job].location;
-    locationArray.push(newLocation);
-  }
-  return locationArray;
-}
+
 // -- end of WORK SECTION
 // -- start of PROJECTS SECTION
 var projects = {
@@ -128,7 +126,7 @@ projects.display = function() {
     $(".project-entry:last").append(formattedDates);
     $(".project-entry:last").append(formattedDescription);
     for (x = 0; x < projects.projects[i].images.length; x++) {
-      var formattedImage = HTMLprojectImage.replace("%data%", projects.projects.images);
+      var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[x]);
       $(".project-entry:last").append(formattedImage);
     }
   }
@@ -157,12 +155,14 @@ var education = {
     "name": "UC Irvine",
     "dates": "August 2012 - July 2015",
     "location": "Irvine",
-    "major": "Public Health and Business Management",
+    "majors": "Public Health and Business Management",
     "description": "Left my third year to pursue other interests and research"
   }]
 };
+
 $("#education").append(HTMLonlineClasses);
 $("#education").append(HTMLschoolStart);
+
 education.display = function() {
   education.online.forEach(function(op) {
     var formattedonlineSchool = HTMLonlineSchool.replace("%data%", op.school);
@@ -175,7 +175,7 @@ education.display = function() {
     var formattedschoolName = HTMLschoolName.replace("%data%", s.name);
     var formattedschoolDates = HTMLschoolDates.replace("%data%", s.dates);
     var formattedschoolLocation = HTMLschoolLocation.replace("%data%", s.location);
-    var formattedschoolMajor = HTMLschoolMajor.replace("%data%", s.major);
+    var formattedschoolMajor = HTMLschoolMajor.replace("%data%", s.majors);
     var formattedschoolDescription = HTMLschoolDescription.replace("%data%", s.description);
     $(".education-entry:last").append(formattedschoolName, formattedschoolDates, formattedschoolLocation, formattedschoolMajor, formattedschoolDescription);
   });
@@ -185,7 +185,8 @@ education.display();
 // -- map
 $("#mapDiv").append(googleMap);
 
-/* -- start of the internationalizeButton (I opted this out but still kept the code for lesson purposes)
+/*
+-- start of the internationalizeButton (I opted this out but still kept the code for lesson purposes)
 
 function inName(name) {
  name = name.trim().split(" ");

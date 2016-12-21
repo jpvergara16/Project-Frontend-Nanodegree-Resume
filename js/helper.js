@@ -29,6 +29,11 @@ var HTMLwelcomeMsg = '<span class="welcome-message">%data%</span>';
 var HTMLskillsStart = '<h3 id="skills-h3">Skills at a Glance:</h3><ul id="skills" class="flex-column"></ul>';
 var HTMLskills = '<li class="flex-item"><span class="white-text">%data%</span></li>';
 
+var HTMLsummaryStart = '<div class="summary-entry"></div>';
+var HTMLsummaryBio = '%data%<br>';
+var HTMLsummaryGoals = '<br>%data%<br>';
+var HTMLsummaryPlans = '<br>%data%';
+
 var HTMLworkStart = '<div class="work-entry"></div>';
 var HTMLworkEmployer = '<a href="#">%data%</a>';
 var HTMLworkTitle = '<div class="work-title">%data%</div>';
@@ -48,6 +53,7 @@ var HTMLschoolDegree = '%data%</a>';
 var HTMLschoolDates = '<div class="date-text">%data%</div>';
 var HTMLschoolLocation = '<div class="location-text">%data%</div>';
 var HTMLschoolMajor = '<em><br>Major: %data%</em>';
+var HTMLschoolDescription = '<p><br>%data%</p>';
 
 var HTMLonlineClasses = '<h3>Online Classes</h3>';
 var HTMLonlineTitle = '<div class="online-title"><a href="#">%data%</a></div>';
