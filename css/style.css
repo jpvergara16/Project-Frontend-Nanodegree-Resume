@@ -10,8 +10,8 @@ h4,
 h5,
 h6,
 .hrole {
-  padding:0;
-  margin:0;
+  padding: 0;
+  margin: 0;
   font-family: "Raleway", sans-serif;
 }
 
@@ -36,7 +36,7 @@ h6,
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 46px;
   color: #FFFFFF;
   line-height: 48px;
   display: inline-flex;
@@ -44,7 +44,7 @@ h1 {
 
 h2 {
   font-weight: bold;
-  font-size: 22px;
+  font-size: 28px;
   color: #5AA6DA;
   line-height: 29px;
   padding: 10px;
@@ -60,7 +60,7 @@ h3 {
 
 h4 {
   font-weight: bold;
-  font-size: 14px;
+  font-size: 20px;
   color: #4BB1FF;
   line-height: 17px;
 }
@@ -69,16 +69,22 @@ h2,
 h3,
 h4,
 h5 {
-  padding:10px 5%;
-
+  padding: 10px 5%;
 }
 
 .work-title,
 .online-title,
 .online-school {
-  font-weight: bolder;;
+  font-weight: 600;
 }
 
+.edu-title {
+  font-style: italic;
+  font-size: 25px;
+  color: #05041F;
+}
+
+/* Navigation Bar Styling */
 #nav-bar {
   width: 100%;
   background-color: #05041F;
@@ -97,7 +103,8 @@ h5 {
 }
 
 li a:hover:not(.active) {
-  background-color: white;
+  transition: background-color 0.2s ease-out;
+  background-color: #233151;
   color: #05041F;
 }
 
@@ -105,10 +112,32 @@ li a:hover:not(.active) {
   position: static;
   top: 0;
   width: 100%;
+  vertical-align: middle;
+  text-align: center;
+}
+
+#nav-bar a {
+  color: white;
+}
+
+a.nav-item {
+  color: white;
+  height: auto;
+  padding: 10px 20px;
+  margin-top: 0px;
+  display: block;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* end for Navigation Styling */
+
+.online-school {
+  padding: 10px;
 }
 
 .online-title {
-  display:flex;
+  display: inline-flex;
 }
 
 .date-text {
@@ -116,8 +145,7 @@ li a:hover:not(.active) {
   font-size: 14px;
   color: #999;
   line-height: 16px;
-  float: left;
-  display: flex;
+  display: inline-flex;
 }
 
 .location-text {
@@ -137,13 +165,8 @@ p {
 a {
   color: #CC665F;
   text-decoration: none;
-  margin-top: 10px;
-  margin-bottom: 10px;
   display: block;
-}
-
-#nav-bar a {
-  color: #6DA9CF;
+  padding: 10px 0 5px;
 }
 
 .hrole {
@@ -181,7 +204,7 @@ a {
 .gray {
   background-color: #f3f3f3;
   padding-bottom: 10px;
-  clear:both;
+  clear: both;
 }
 
 .light-blue {
@@ -243,14 +266,13 @@ span {
 @media only screen and (max-width:900px) {
   .biopic {
     width: 200px;
-  }
+  };
 }
 
 @media only screen and (max-width: 750px) {
   .biopic {
     width: 200px;
-  }
-
+  };
 }
 
 #map {
@@ -271,7 +293,7 @@ span {
     display: block;
   }
 
-  .flex-column{
+  .flex-column {
     flex-direction: column;
-  }
+  };
 }
