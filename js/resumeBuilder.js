@@ -1,7 +1,5 @@
-/*
-This is empty on purpose! Your code to build the resume will go here.
- */
-// -- start of BIO HEADER SECTION
+// -- BIO OBJECT
+
 var bio = {
     "name": "Julius Vergara",
     "role": "Web Developer, UX Designer",
@@ -13,43 +11,37 @@ var bio = {
         "location": "Irvine"
     },
     "welcomeMessage": " \"Hello, I'm Julius, and welcome to my Resume!\" ",
-    "skills": ["HTML", "CSS", "Javascript", "Web Development", ],
+    "skills": ["HTML", "CSS", "Javascript", "Web Development" ],
     "biopic": "images/headshot.jpg",
 };
-
+// --  BIO DISPLAY FUNCTION
 bio.display = function() {
-    // header info
     var formattedName = HTMLheaderName.replace("%data%", bio.name);
     var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
     var bioPic = HTMLbioPic.replace("%data%", bio.biopic);
     var welcomeMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
-    // contact info
     var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
-    var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.phone);
+    var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
     var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
     var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
     var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
     $("#footerContacts").append(formattedEmail, formattedGithub, formattedTwitter, formattedMobile, formattedLocation);
     $("#header").prepend(formattedName, formattedRole);
-    $("#header").append(bioPic);
-    $("#header").append(welcomeMessage);
-    $("#header").append(HTMLskillsStart);
+    $("#header").append(bioPic, welcomeMessage, HTMLskillsStart);
     for (var i = 0; i < bio.skills.length; i++) {
         var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
         $("#skills").append(formattedSkill);
     }
 };
-bio.display();
+// -- end of BIO SECTION
 
-// -- end of BIO HEADER SECTION
-
-// -- SUMMARY SECTION
+// -- SUMMARY OBJECT
 var summary = {
     "bio": "I am an up and coming web designer/developer, looking to make my mark in the tech platform.",
     "goals": "My goals are to fully design and implement strategies in my UX courses to assist in the development of E-Commerce Sites, Blogs, and other, businesses/individuals to use their sites to their full potential.",
     "plans": "I also eventually plan to own a digital media/marketing business and an E-Commerce business which I want to fully develop and run myself."
 };
-
+// -- SUMMARY DISPLAY FUNCTION
 summary.display = function() {
     $("#summary").append(HTMLsummaryStart);
     var formattedsumBio = HTMLsummaryBio.replace("%data%", summary.bio);
@@ -58,7 +50,6 @@ summary.display = function() {
     $(".summary-entry:last").append(formattedsumBio, formattedsumGoals, formattedsumPlans);
 };
 
-summary.display();
 // -- end of SUMMARY SECTION
 
 // -- This is the WORK SECTION
@@ -92,8 +83,7 @@ work.display = function() {
         $(".work-entry:last").append(formattedDates);
         $(".work-entry:last").append(formattedDescription);
     }
-}
-work.display();
+};
 
 
 // -- end of WORK SECTION
@@ -117,6 +107,7 @@ var projects = {
     }, ]
 };
 
+// PROJECTS DISPLAY FUNCTION
 projects.display = function() {
     for (var i = 0; i < projects.projects.length; i++) {
         $("#projects").append(HTMLprojectStart);
@@ -132,10 +123,8 @@ projects.display = function() {
         }
     }
 };
-projects.display();
 
 // -- end of PROJECTS SECTION
-// I will add project images in Development
 
 // -- EDUCATION SECTION
 
@@ -160,7 +149,7 @@ var education = {
         "name": "UC Irvine",
         "dates": "August 2012 - July 2015",
         "location": "Irvine",
-        "majors": "Public Health and Business Management",
+        "majors": ["Public Health", " Business Management"],
         "description": "Left the university during my third year to focus on other nonacademic interests and independent research"
     }]
 };
@@ -186,15 +175,22 @@ education.display = function() {
         $(".education-entry:last").append(formattedonlineSchool, formattedonlineTitle, formattedonlineDates, formattedonlineUrl);
     });
 };
-education.display();
+
 // -- end of EDUCATION SECTION
 
-// -- map
+// -- call to map function
 $("#mapDiv").append(googleMap);
 
+// -- callback DISPLAY functions
+bio.display();
+summary.display();
+work.display();
+projects.display();
+education.display();
 
 /*
--- start of the internationalizeButton (I opted this out but still kept the code for lesson purposes)
+----
+start of the internationalizeButton (I opted this out but still kept the code for lesson purposes)
 
 function inName(name) {
  name = name.trim().split(" ");
@@ -207,5 +203,6 @@ function inName(name) {
 
 $("#main").append(internationalizeButton);
 
--- end of the internationalizeButton section
+end of the internationalizeButton section
+----
 */
